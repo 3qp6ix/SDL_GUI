@@ -1,6 +1,6 @@
 #include "SDL2/SDL.h" // SDL2
 #include "graphics.h" // clear()
-#include "gui.h" // gui
+#include "gui.h"
 
 #include <stdbool.h> // bool
 
@@ -16,7 +16,6 @@ void draw_chessboard(WIDGET* w,SDL_Surface* surface){
 
 int main(int argc,char** argv){
     if(SDL_Init(SDL_INIT_VIDEO)!=0) return 1;
-    GUI_INIT();
 
     SDL_Window* main_window = SDL_CreateWindow(
         "Window",
@@ -30,6 +29,8 @@ int main(int argc,char** argv){
         SDL_Quit();
         return 1;
     }
+
+    DEFAULT_FONT = GET_FONT_DATA("./assets/default_font.txt");
 
     SDL_Surface* main_surface = SDL_GetWindowSurface(main_window);
 
@@ -50,7 +51,7 @@ int main(int argc,char** argv){
     LABEL* label = CREATE_LABEL(210,30,180,100);
     label->title = "Hello world!";
     label->scroll_y = 0;
-    label->max_scroll_y = 5;;
+    label->max_scroll_y = 5;
     label->text = 
     "  #### LABEL ####  \n\n"
     "Hello, stranger.\n"
@@ -86,9 +87,8 @@ int main(int argc,char** argv){
         SDL_UpdateWindowSurface(main_window);
     }
 
+    DESTROY_FONT_DATA(DEFAULT_FONT);
     DESTROY_WIDGET_MANAGER(widget_manager);
-    GUI_EXIT();
-
     SDL_DestroyWindow(main_window);
     SDL_Quit();
     return 0;

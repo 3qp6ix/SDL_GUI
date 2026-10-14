@@ -130,11 +130,3 @@ void DRAW_TEXT(
 }
 
 FONT_DATA* DEFAULT_FONT = NULL;
-
-void TEXT_INIT(){
-    DEFAULT_FONT = GET_FONT_DATA("./assets/default_font.txt");
-}
-
-void TEXT_QUIT(){
-    DESTROY_FONT_DATA(DEFAULT_FONT);
-}

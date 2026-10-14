@@ -35,7 +35,4 @@ void DRAW_TEXT(
 
 extern FONT_DATA* DEFAULT_FONT;
 
-void TEXT_INIT();
-void TEXT_QUIT();
-
 #endif
